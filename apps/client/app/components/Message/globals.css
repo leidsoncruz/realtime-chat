@@ -1,0 +1,32 @@
+.message-wrap {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(207, 218, 225, .4);
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.user-photo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10%;
+}
+
+.message-info {
+  display: flex;
+  gap: 20px;
+  font-size: 16px;
+  color: #333;
+  align-items: center;
+  font-weight: 600;
+}
+
+.message p:nth-child(2) {
+  font-size: 12px;
+  color: #445166;;
+}

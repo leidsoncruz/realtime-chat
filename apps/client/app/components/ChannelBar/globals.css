@@ -1,0 +1,56 @@
+.channel-wrap {
+  width: 176px;
+  background: #505d71;
+  height: 100vh;
+  position: relative;
+}
+
+ul.channel-list {
+  list-style: none;
+}
+
+.channel-list li {
+  padding: 15px;
+  color: #bcc3d0;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  border-bottom: 2px solid #586476;
+  transition: all 0.2s linear;
+}
+
+.channel-list li:hover{
+  cursor: pointer;
+}
+
+.channel-list li:hover,
+.channel-list li.active {
+  background: #445166;
+  color: #fff;
+  font-weight: 600;
+}
+
+.channel-wrap .user {
+  color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  padding: 8px;
+  background: #445166;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.channel-wrap .user .user-photo {
+  border-radius: 50%
+}
+
+.channel-wrap .user .user-name {
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

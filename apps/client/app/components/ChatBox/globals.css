@@ -1,0 +1,41 @@
+.chat-wrap {
+  width: 100%;
+}
+
+.conversation-area {
+  height: calc(100vh - 50px);
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.message-box {
+  height: 50px;
+  width: 100%;
+  background-color: #e4eaee;
+  padding: 6px;
+  display: flex;
+  gap: 6px;
+  border-top: 1px solid #cfdae1;
+}
+
+.message-box input {
+  border: 1px solid #cfdae1;
+  border-radius: 5px;
+  flex: 1;
+  padding: 0 10px;
+}
+
+.message-box button {
+  background: #a0b4c0;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+}
+
+.message-box button:hover {
+  background: #78868f;
+  cursor: pointer;
+}
