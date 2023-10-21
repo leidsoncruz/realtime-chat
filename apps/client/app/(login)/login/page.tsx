@@ -1,12 +1,9 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import { FormEvent } from 'react';
 
 import styles from './login.module.css';
-
-import { Paths } from '@/constants';
-import { useAuth } from '@/lib';
 
 interface FormElements extends HTMLFormControlsCollection {
   name: HTMLInputElement;
@@ -16,13 +13,11 @@ interface FormElement extends HTMLFormElement {
 }
 
 export default function Home() {
-  const { login } = useAuth();
-  const router = useRouter();
-
   const handleSubmit = (event: FormEvent<FormElement>) => {
     event.preventDefault();
-    login(event.currentTarget.elements.name.value);
-    router.push(Paths.Chat);
+    signIn('credentials', {
+      username: event.currentTarget.elements.name.value,
+    });
   };
 
   return (

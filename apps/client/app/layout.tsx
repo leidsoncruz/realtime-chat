@@ -1,14 +1,18 @@
+import { getServerSession } from 'next-auth';
 import { PropsWithChildren } from 'react';
 
-import { AuthContextProvider } from '@/lib';
+import { AuthProvider } from '@/lib';
+import { authOptions } from '@/services';
 
 import './globals.css';
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default async function RootLayout({ children }: PropsWithChildren) {
+  const session = await getServerSession(authOptions);
+
   return (
     <html>
       <body>
-        <AuthContextProvider>{children}</AuthContextProvider>
+        <AuthProvider session={session}>{children}</AuthProvider>
       </body>
     </html>
   );

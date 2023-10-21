@@ -1,6 +1,7 @@
 'use client';
 
 import { Message } from '@app/types';
+import { useSession } from 'next-auth/react';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 
 import './globals.css';
@@ -9,13 +10,17 @@ import { Message as MessageComponent } from '../Message';
 
 import { FormElement } from './types';
 
-import { useAuth, useChatScroll, useClient } from '@/lib';
+import { useChatScroll, useClient } from '@/lib';
 
 const ChatBox = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const inputMessageRef = useRef<HTMLInputElement>(null);
 
-  const { image, name } = useAuth();
+  const { data: session } = useSession();
+
+  const name = session?.user?.name;
+  const image = session?.user?.image;
+
   const { client } = useClient();
   const chatRef = useChatScroll([]);
 
