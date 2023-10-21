@@ -1,5 +1,6 @@
 'use client';
 
+import { ServerToClientEvents, ClientToServerEvents } from '@app/types';
 import { PropsWithChildren, createContext, useEffect, useState } from 'react';
 import { Socket, io } from 'socket.io-client';
 
@@ -17,9 +18,12 @@ export const ClientContextProvider = ({ children }: PropsWithChildren) => {
   const [socket, setSocket] = useState<Socket | null>(null);
 
   useEffect(() => {
-    const client = io(process.env.NEXT_PUBLIC_APP_SOCKET_SERVER!, {
-      transports: ['websocket'],
-    });
+    const client: Socket<ServerToClientEvents, ClientToServerEvents> = io(
+      process.env.NEXT_PUBLIC_APP_SOCKET_SERVER!,
+      {
+        transports: ['websocket'],
+      }
+    );
 
     setSocket(client);
 

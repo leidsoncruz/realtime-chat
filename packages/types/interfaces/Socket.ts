@@ -1,4 +1,4 @@
-import { MessageDTO, Message } from '@app/types';
+import { Message, MessageDTO } from '.';
 
 export interface ServerToClientEvents {
   message: (params: MessageDTO) => void;

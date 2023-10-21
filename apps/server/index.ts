@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 import http from "http";
 import { Server } from "socket.io";
-import { ServerToClientEvents, ClientToServerEvents } from '@/types';
+import { ServerToClientEvents, ClientToServerEvents } from '@app/types';
 
 
 const app = express();
