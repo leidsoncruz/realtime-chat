@@ -9,6 +9,18 @@ ul.channel-list {
   list-style: none;
 }
 
+.channel-list li:first-of-type{
+  cursor: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.channel-list li:first-of-type:hover{
+  cursor: auto;
+  font-weight: 400;
+}
+
 .channel-list li {
   padding: 15px;
   color: #bcc3d0;

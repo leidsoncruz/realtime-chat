@@ -1,6 +1,6 @@
 'use client';
 
-import { Message } from '@app/types';
+import { Events, Message } from '@app/types';
 import { useSession } from 'next-auth/react';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 
@@ -10,7 +10,7 @@ import { Message as MessageComponent } from '../Message';
 
 import { FormElement } from './types';
 
-import { useChatScroll, useClient } from '@/lib';
+import { useChatScroll, useClient, useRooms } from '@/lib';
 
 const ChatBox = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -21,11 +21,22 @@ const ChatBox = () => {
   const name = session?.user?.name;
   const image = session?.user?.image;
 
+  const user = {
+    name,
+    image,
+  };
+
   const { client } = useClient();
   const chatRef = useChatScroll([]);
+  const { active: activeRoom } = useRooms();
 
   useEffect(() => {
-    client?.on('message', (newMessage: Message) => {
+    client?.emit(Events.JoinRoom, activeRoom);
+    setMessages([]);
+  }, [activeRoom, client]);
+
+  useEffect(() => {
+    client?.on(Events.MessageResponse, (newMessage: Message) => {
       setMessages((prevMessages) => [...prevMessages, newMessage]);
     });
 
@@ -36,11 +47,9 @@ const ChatBox = () => {
 
   const handleSubmit = (event: FormEvent<FormElement>) => {
     event.preventDefault();
-    client?.emit('message', {
-      user: {
-        name,
-        image,
-      },
+    client?.emit(Events.Message, {
+      room: activeRoom,
+      user,
       message: event.currentTarget.elements.message.value,
     });
     if (inputMessageRef.current) inputMessageRef.current.value = '';

@@ -19,6 +19,8 @@ You can perform the login by going to `/login` route and then you are redirected
 
 As it uses local storage to store the user, you need to open different browsers or open a normal tab and an incognito tab to see the magic happening.
 
+Since messages aren't persistent, each page refresh or channel change will clear chat messages. To have a message history, you need to persist them somewhere.
+
 
 This project uses:
 - [`moment`](https://momentjs.com/) to have a friendly date format without the need to do it manually.
