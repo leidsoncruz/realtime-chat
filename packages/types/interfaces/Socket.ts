@@ -1,9 +1,14 @@
 import { Message, MessageDTO } from '.';
+import { Events } from '../enums';
 
 export interface ServerToClientEvents {
-  message: (params: MessageDTO) => void;
+  [Events.MessageResponse]: (params: Message) => void;
+  [Events.ListRoom]: (rooms: string[]) => void;
 }
 
 export interface ClientToServerEvents {
-  message: (params: Message) => void;
+  [Events.Message]: (params: MessageDTO) => void;
+  [Events.JoinRoom]: (roomName: string) => void;
+  [Events.LeaveRoom]: (roomName: string) => void;
+  [Events.CreateRoom]: (roomName: string, callback: any) => void;
 }
