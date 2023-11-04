@@ -1,6 +1,6 @@
 # Real-Time Collaboration with NextJS and Socket.IO
 
-This is the code example of the article. It uses turbo to manage the monorepo and NextJS to the client side and Express to the server side.
+This is the code example of the [article](https://leidson.medium.com/real-time-collaboration-with-nextjs-building-interactive-multi-user-applications-91b5eabd3a05). It uses turbo to manage the monorepo and NextJS to the client side and Express to the server side.
 
 ## Using this example
 
