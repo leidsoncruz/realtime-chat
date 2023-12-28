@@ -9,14 +9,10 @@ export const metadata: Metadata = {
     'Real-Time Collaboration with Next.js: Building Interactive Multi-User Applications',
 };
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default function ChatLayout({ children }: PropsWithChildren) {
   return (
-    <html lang='en'>
-      <body>
-        <ClientContextProvider>
-          <RoomContextProvider>{children}</RoomContextProvider>
-        </ClientContextProvider>
-      </body>
-    </html>
+    <ClientContextProvider>
+      <RoomContextProvider>{children}</RoomContextProvider>
+    </ClientContextProvider>
   );
 }

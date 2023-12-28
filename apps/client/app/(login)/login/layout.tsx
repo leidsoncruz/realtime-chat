@@ -6,14 +6,10 @@ export const metadata: Metadata = {
     'Real-Time Collaboration with Next.js: Building Interactive Multi-User Applications',
 };
 
-export default function RootLayout({
+export default function LoginLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang='en'>
-      <body>{children}</body>
-    </html>
-  );
+  return children;
 }
